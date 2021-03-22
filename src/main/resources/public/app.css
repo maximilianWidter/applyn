@@ -1,0 +1,15 @@
+/**
+  File app.css
+ */
+
+.angenommen {
+    background-color: green;
+}
+
+.negative {
+    background-color: red;
+}
+
+.body,html,ui-view {
+    height: 100%;
+}

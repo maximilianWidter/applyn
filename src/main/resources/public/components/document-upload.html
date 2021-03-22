@@ -1,0 +1,20 @@
+<style>
+    #input-document-upload {
+        display: none;
+    }
+</style>
+
+<md-content layout-margin layout-padding>
+    <!--
+    <input class="ng-hide" id="input-file-id" multiple type="file" />
+    <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+    -->
+    <label  for="input-document-upload"
+            class="md-button md-raised md-primary">
+        Dokument auswählen</label>
+    <input name="data" id="input-document-upload" class=ng-hide" type="file" multiple/>
+    <!--
+        <md-button class="md-raised md-accent" ng-click="$ctrl.speichern()" >
+            Datei hinzufügen
+        </md-button>-->
+</md-content>

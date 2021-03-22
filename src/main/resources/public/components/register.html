@@ -1,0 +1,51 @@
+<style>
+    #registerBack{
+        /**background-image: url("../images/bckgrnd.jpg");**/
+        background-color: #123054;
+    }
+    #loginBox-register{
+        background-color: white;
+        width: 350px;
+    }
+</style>
+<div layout="column" layout-align="center center" layout-fill="layout-fill" id="registerBack">
+    <div layout="column" class="loginBox md-whiteframe-z1" id="loginBox-register">
+        <md-toolbar>
+            <h2 class="md-toolbar-tools"><span>User anlegen</span></h2>
+        </md-toolbar>
+        <form name="$ctrl.formular" layout="column" layout-padding>
+            <md-input-container>
+                <label>Vorname und Nachname</label>
+                <input type="text"
+                       ng-model="$ctrl.fullname" name="firstname"
+                       required
+                       minlength="3">
+                <div ng-messages="$ctrl.formular.fullname.$error" role="alert">
+                    <div ng-message="required">
+                        Ihr Vorname muss angegeben werden.
+                    </div>
+                    <div ng-message="minlength">
+                        Ihr Vorname muss mindestens drei Zeichen haben.
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Passwort</label>
+                <input type="password" ng-model="$ctrl.password" name="password" required>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Passwort wiederholen</label>
+                <input type="password" ng-model="$ctrl.password2" name="password2" equals="$ctrl.password" required>
+                <div ng-messages="$ctrl.formular.password2.$error" role="alert">
+                    <div ng-message="equals">
+                        Die beiden Passworte sind unterschiedlich.
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-button ng-click="$ctrl.adduser()">Registrieren</md-button>
+        </form>
+    </div>
+</div>

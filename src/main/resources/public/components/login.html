@@ -1,0 +1,69 @@
+<style>
+    #loginBack{
+       /** background-image: url("../images/bckgrnd.jpg");
+        background-size: cover;**/
+        background-color: #123054;
+    }
+    #loginBox-login{
+        background-color: white;
+        width: 350px;
+    }
+</style>
+<div layout="column" layout-align="center center" layout-fill="layout-fill" id="loginBack">
+    <div layout="column" class="loginBox md-whiteframe-z1" id="loginBox-login">
+        <md-toolbar>
+            <h2 class="md-toolbar-tools"><span>Login</span></h2>
+        </md-toolbar>
+        <md-content layout="column" class="md-padding">
+            <md-button href="oauth2/authorization/microsoft">
+                <img src="https://www.eduvidual.at/local/eduvidual/pix/logo_microsoft.svg" alt="Microsoft" width="20">&nbsp;
+                Mit Microsoft-Account anmelden
+            </md-button>
+            <md-divider></md-divider>
+            <div layout="column" layout-align="center center">
+                <div flex="">oder </div>
+                <div flex="">melden Sie sich direkt an:</div>
+            </div>
+        </md-content>
+        <form name="$ctrl.formular" layout="column" layout-padding>
+            <md-content layout="column" class="md-padding">
+                <md-input-container>
+                    <label>Vorname und Nachname</label>
+                    <input type="text"
+                           ng-model="$ctrl.fullname" name="firstname"
+                           required
+                           minlength="3">
+                    <div ng-messages="$ctrl.formular.fullname.$error" role="alert">
+                        <div ng-message="required">
+                            Ihr Vorname muss angegeben werden.
+                        </div>
+                        <div ng-message="minlength">
+                            Ihr Vorname muss mindestens drei Zeichen haben.
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Passwort</label>
+                    <input type="password" ng-model="$ctrl.password" name="password">
+                    <div ng-messages="$ctrl.password.$error" role="alert">
+                        <div ng-message="required">Passwort muss angegeben werden.</div>
+                    </div>
+                </md-input-container>
+
+                <md-divider></md-divider>
+                <div layout="row" layout-align="center center">
+                    <md-button type="submit" class=" md-primary"
+                               ng-click="$ctrl.einloggen()">
+                        Einloggen
+                    </md-button>
+                    <div flex="flex"></div>
+                    <md-button md-no-ink>
+                        Passwort vergessen
+                    </md-button>
+                </div>
+
+                <md-button ui-sref="register">Account Erstellen</md-button>
+            </md-content>
+        </form>
+    </div>
+</div>

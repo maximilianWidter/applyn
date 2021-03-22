@@ -1,0 +1,242 @@
+<style>
+    #wrap {
+        height: 100%;
+    }
+
+    #ball {
+        background-color: aqua;
+    }
+
+    .doclist {
+        height: 350px;
+    }
+</style>
+<logged-in></logged-in>
+<div layout="row" id="wrap">
+    <div layout="column" md-colors="{background: 'primary-400'}">
+        <leiste></leiste>
+    </div>
+
+    <div layout="column" class="md-inline-form" flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <div>Bewerbung anlegen</div>
+                <div flex></div>
+
+                <!-- Zurück-Button -->
+                <md-button class="md-icon-button"
+                           ui-sref="bewerbung-liste">
+                    <md-icon md-font-icon="material-icons">arrow_back</md-icon>
+                </md-button>
+
+                <!-- Export-Button -->
+                <md-button class="md-icon-button"
+                           ng-hide="!$ctrl.edit"
+                           ng-disabled="$ctrl.formular.$invalid"
+                           ng-click="$ctrl.export()">
+                    <md-icon md-font-icon="material-icons">picture_as_pdf</md-icon>
+                </md-button>
+                <!-- Löschen-Button -->
+                <md-button class="md-icon-button"
+                           ng-hide="!$ctrl.edit"
+                           ng-disabled="$ctrl.formular.$invalid"
+                           ng-click="$ctrl.loeschen()">
+                    <md-icon md-font-icon="material-icons">delete</md-icon>
+                </md-button>
+                <!-- Speichern-Button -->
+                <md-button class="md-icon-button"
+                           ng-disabled="$ctrl.formular.$invalid"
+                           ng-click="$ctrl.speichern()">
+                    <md-icon md-font-icon="material-icons">save</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <!--md-button ng-hide="!$ctrl.edit" ng-click="$ctrl.export()">Bewerbung als PDF exportieren</md-button-->
+        <md-content layout="row" layout-margin>
+            <div id="ball" flex="3"></div>
+            <div flex>
+                <form name="$ctrl.formular">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-icon-float md-block" flex-gt-sm="">
+                            <label>Firma</label>
+                            <input type="text"
+                                   ng-model="$ctrl.bewerbung.bewerbung_firmenName"
+                                   name="firma"
+                                   required
+                                   maxlength="50">
+                            <div ng-messages="$ctrl.formular.firma.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">Es muss eine Firma angegeben werden.</div>
+                                <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                                    code.
+                                </div>
+                                <div ng-message="md-maxlength" class="my-message">
+                                    Firmenname zu lang.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <!--md-input-container class="md-block" flex-gt-sm="">
+                            <label>Status</label>
+                            <select ng-model="$ctrl.bewerbung.bewerbung_status" name="status" required>
+                                <option value="Angenommen">Angenommen</option>
+                                <option value="Abgelehnt">Abgelehnt</option>
+                                <option value="In Bearbeitung">In Bearbeitung</option>
+                            </select>
+                            <div ng-messages="$ctrl.formular.status.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">Es muss ein Status angegeben werden.</div>
+                                <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                            </div>
+                        </md-input-container-->
+
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Status</label>
+                            <md-select ng-model="$ctrl.bewerbung.bewerbung_status" name="status" required>
+                                <md-option id="bstat" ng-repeat="b_status in b_stati" value="{{b_status}}">{{b_status}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="$ctrl.formular.status.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">Es muss ein Status angegeben werden.</div>
+                                <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Datum Von</label>
+                            <md-datepicker ng-model="$ctrl.bewerbung.bewerbung_vondatum"
+                                           name="vonDatum"
+                                           min="2000-01-01" max="2100-01-01"
+                                           required
+                                           aria-label="VonDatumseingabe">
+                            </md-datepicker>
+                            <div ng-messages="$ctrl.formular.vonDatum.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">Es muss ein Datum angegeben werden.</div>
+                                <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>Datum Bis</label>
+                            <md-datepicker ng-model="$ctrl.bewerbung.bewerbung_bisdatum"
+                                           name="bisDatum"
+                                           min="2000-01-01" max="2100-01-01"
+                                           required
+                                           aria-label="BisDatumseingabe">
+                            </md-datepicker>
+                            <div ng-messages="$ctrl.formular.bisDatum.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">Es muss ein Datum angegeben werden.</div>
+                                <div ng-message="default" class="my-message">Ungültige Eingabe</div>
+                            </div>
+                        </md-input-container>
+
+                    </div>
+                    <md-input-container>
+                        <label>Position</label>
+                        <input type="text"
+                               ng-model="$ctrl.bewerbung.bewerbung_position"
+                               name="position"
+
+                        >
+                        <div ng-messages="$ctrl.formular.position.$error" role="alert" multiple="">
+                            <div ng-message="required" class="my-message">Es muss eine Position angegeben werden.</div>
+                            <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Firmen-Email</label>
+                        <input type="text"
+                               ng-model="$ctrl.bewerbung.bewerbung_firmenEmail"
+                               name="firmenEmail"
+                               ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+
+                        >
+                        <div ng-messages="$ctrl.formular.firmenEmail.$error" role="alert" multiple="">
+                            <div ng-message="required" class="my-message">Es muss eine Email-Addresse angegeben
+                                werden.
+                            </div>
+                            <div ng-message="pattern" class="my-message">Ungültige Email-Addresse</div>
+                            <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Kontaktperson</label>
+                        <input type="text"
+                               ng-model="$ctrl.bewerbung.bewerbung_kontaktperson"
+                               name="kontaktPerson"
+                        >
+                        <div ng-messages="$ctrl.formular.kontaktPerson.$error" role="alert" multiple="">
+                            <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" layout-gt-sm="row" style="width: 350px;">
+                        <label>Notizen</label>
+                        <textarea
+                                ng-model="$ctrl.bewerbung.bewerbung_notizen"
+                                name="notizen"
+                                md-maxlength="150"
+                                rows="5">
+                        </textarea>
+                        <div ng-messages="$ctrl.formular.notizen.$error" role="alert" multiple="">
+                            <div ng-message="md-maxlength" class="my-message">Die Notizen sind zu lang.</div>
+                            <div ng-message-default class="my-message">Ungültige Eingabe</div>
+                        </div>
+                    </md-input-container>
+                    <div layout="row" >
+                        <div layout="column">
+                            <h4>Dokumente zur Bewerbung hinzufügen</h4>
+                            <div layout="column">
+                                <div flex>
+                                    <label name="datei">
+                                        Neues Dokument hochladen
+                                    </label><br>
+                                    <input id="fileupload" type="file" multiple/>
+                                </div>
+                                <md-input-container style="margin-right: 10px;">
+                                    <label>Bereits hochgeladenes Dokument auswählen</label>
+                                    <md-select multiple ng-model="$ctrl.bewerbung.datei" name="datei">
+                                        <md-option ng-repeat="d in $ctrl.dokumentename"
+                                                   value="{{d._links.self.href}}">{{d.bewerbungsDokument_name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div flex></div>
+                        <div  >
+                            <h4>Zu dieser Bewerbung gehörende Dokumente</h4>
+                            <md-list flex md-padding>
+                                <md-list-item class="md-3-line doclist"
+                                              ng-repeat="d in $ctrl.bewerbungsdokumente track by $index">
+                                    <div class="md-list-item-text" layout="column"
+                                         ng-click="$ctrl.open(d.bewerbungsDokument_datei,d.bewerbungsDokument_name)">
+                                        <h3>
+                                            {{d.bewerbungsDokument_name}}
+                                        </h3>
+                                    </div>
+                                    <md-icon md-font-icon="material-icons" ng-click="$ctrl.removeDokument($index)">
+                                        delete
+                                    </md-icon>
+                                </md-list-item>
+                            </md-list>
+                        </div>
+                        <div flex="5"></div>
+                    </div>
+
+
+                </form>
+                <md-divider></md-divider>
+                <div ng-hide="!$ctrl.edit" layout="row">
+                    <md-button disabled="true">Zuletzt bearbeitet: {{$ctrl.lastedit | date: 'short' : 'ET'}}</md-button>
+                    <md-button disabled="true">Erstellt am: {{$ctrl.erstellungsdatum | date: 'short' : 'ET' }}
+                    </md-button>
+                </div>
+
+            </div>
+
+            <div id="ball" flex="3"></div>
+
+        </md-content>
+    </div>
+</div>

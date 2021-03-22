@@ -1,0 +1,50 @@
+<!--
+<div> {{$ctrl.bewerbung.bewerbung_firmenName}} </div>
+<div> {{$ctrl.bewerbung.bewerbung_notizen}} </div>
+<div> {{$ctrl.bewerbung.bewerbung_datum}} </div>
+<div layout="column">
+   <document  ng-repeat="d in $ctrl.documents"
+               ng-click="$ctrl.open(d.bewerbungsDokument_datei,d.bewerbungsDokument_name)"
+               document="d">
+
+    </document>
+</div>
+-->
+<style>
+
+    .status_abgelehnt {
+        background-color: red;
+    }
+
+    .status_ausstehend {
+        background-color: yellow;
+    }
+
+    .status_angenommen {
+        background-color: green;
+    }
+</style>
+<md-list-item class="md-3-line" ng-click="$ctrl.details()">
+    <div class="md-list-item-text" layout="column">
+        <h3 layout="row">
+            <div flex>{{$ctrl.bewerbung.bewerbung_firmenName}}</div>
+            <div flex>{{$ctrl.bewerbung.bewerbung_vondatum | date:shortDate}}</div>
+            <div flex>{{$ctrl.bewerbung.bewerbung_bisdatum | date:shortDate}}</div>
+            <!--div flex>{{$ctrl.bewerbung.bewerbung_status}}</div-->
+            <div flex ng-if="$ctrl.bewerbung.bewerbung_status == 'Angenommen'" style="color: green;  font-weight: bolder">
+                {{$ctrl.bewerbung.bewerbung_status}}
+            </div>
+            <div flex ng-if="$ctrl.bewerbung.bewerbung_status == 'Abgelehnt'" style="color: red;  font-weight: bolder">
+                {{$ctrl.bewerbung.bewerbung_status}}
+            </div>
+            <div flex ng-if="$ctrl.bewerbung.bewerbung_status == 'Ausstehend'" style="color: orange; font-weight: bolder">
+                {{$ctrl.bewerbung.bewerbung_status}}
+            </div>
+
+
+            <div flex>{{$ctrl.bewerbung.bewerbung_firmenEmail}}</div>
+            <div flex>{{$ctrl.bewerbung.bewerbung_position}}</div>
+            <div flex>{{$ctrl.bewerbung.bewerbung_erstellungsdatum | date: 'short' : 'ET'}}</div>
+        </h3>
+    </div>
+</md-list-item>

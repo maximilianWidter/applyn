@@ -1,0 +1,22 @@
+<div class="topbar">
+  <md-toolbar class="md-hue-1">
+    <div layout="row">
+      <div class="md-toolbar-tools">
+        <div layout-align="start center">
+          <!--<md-icon md-svg-icon="../images/praktula2_revengeofthePraktula.svg"></md-icon>
+          APPLYN-->
+          <img src="../images/applyn-logo-1.png" height="40">
+        </div>
+        <div flex></div> <!-- NICHT ENTFERNEN -->
+        <div layout-align="end center" md-colors="{color: 'primary-A100'}">
+          <md-icon class="material-icons" md-colors="{color: 'primary-A100'}">account_circle</md-icon>
+          {{ $ctrl.user.displayName }}
+        </div>
+
+        <md-button layout-align="end center" class="md-fab md-mini" md-colors="{background: 'primary-400'}" aria-label="Logout" ng-click="$ctrl.logout()">
+          <md-icon class="material-icons" md-colors="{color: 'primary-A100'}">power_settings_new</md-icon>
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+</div>

@@ -1,0 +1,54 @@
+<style>
+    #wrap {
+        height: 100%;
+    }
+
+</style>
+<logged-in></logged-in>
+<div layout="row" id="wrap">
+    <div layout="column" md-colors="{background: 'primary-400'}">
+        <leiste></leiste>
+    </div>
+    <div layout="column" flex>
+        <md-toolbar layout="row"><div class="md-toolbar-tools">
+            <div layout-align="start center">
+                <h1 class="md-toolbar-tools thin">Bewerbungen von {{ $ctrl.user.displayName }} </h1>
+            </div>
+            <div flex></div> <!-- NICHT ENTFERNEN -->
+            <md-button layout-align="end center"
+                       aria-label="PDFExport" ng-click="$ctrl.getbewerbung()" md-colors="{background: 'primary-A100',color: 'primary-300'}">
+                <label>Als PDF exportieren</label>
+                <md-icon class="material-icons">picture_as_pdf</md-icon>
+            </md-button>
+            <md-button layout-align="end center"
+                       aria-label="Zurück" ui-sref="admin-list" md-colors="{background: 'primary-A100',color: 'primary-300'}">
+                <label>Zurück</label>
+                <md-icon class="material-icons" >arrow_back</md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+    <md-divider></md-divider>
+        <md-content>
+    <md-list flex layout-padding>
+        <md-header class="md-no-sticky">Angelegte Bewerbungen</md-header>
+        <md-list-item class="md-3-line">
+            <div class="md-list-item-text" layout="column">
+                <h3 layout="row">
+                    <div flex>Firma</div>
+                    <div flex>von</div>
+                    <div flex>bis</div>
+                    <div flex>Status</div>
+                    <div flex>Email</div>
+                    <div flex>Position</div>
+                    <div flex>Erstellt am</div>
+                </h3>
+            </div>
+        </md-list-item>
+
+        <bewerbung ng-repeat="b in $ctrl.bewerbungen"
+                   bewerbung="b">
+        </bewerbung>
+    </md-list>
+        </md-content>
+</div>
+</div>
