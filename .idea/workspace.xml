@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef565fa0-728a-453c-9a2d-ebd8c8a08079" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pdfmake/.github/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfmake/.github/workflows/node.js.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfmake/build/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/pdfmake/build/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfmake/build/pdfmake.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/pdfmake/build/pdfmake.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfmake/build/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/pdfmake/build/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfmake/build/pdfmake.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/pdfmake/build/pdfmake.min.js.map" afterDir="false" />
-    </list>
+    <list default="true" id="ef565fa0-728a-453c-9a2d-ebd8c8a08079" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,17 +94,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OAuth" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="oauth2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="server.Main" />
@@ -183,6 +165,7 @@
       <workItem from="1616011433307" duration="196000" />
       <workItem from="1616166570392" duration="1279000" />
       <workItem from="1616427464645" duration="3240000" />
+      <workItem from="1616432415774" duration="22000" />
     </task>
     <servers />
   </component>

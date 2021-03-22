@@ -12,7 +12,12 @@
 
 	<name>Vorlage</name>
 	<description>Spring Boot-Vorlage mit OAuth2-Authentifizierung</description>
-
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>9.4-1206-jdbc42</version>
+	</dependency>
+	
 	<parent>
 		<groupId>at.rennweg.htl</groupId>
 		<artifactId>spring-boot</artifactId>
